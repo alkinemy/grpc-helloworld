@@ -9,7 +9,6 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class HelloGrpcClient {
 
-
 	private final HelloGrpc.HelloBlockingStub blockingStub;
 	private final HelloGrpc.HelloStub asyncStub;
 	private final HelloGrpc.HelloFutureStub futureStub;
@@ -32,7 +31,7 @@ public class HelloGrpcClient {
 		log.info("[김정은] 요청 전송: {}", message);
 
 		//두번째 인자: 서버에 보낼 콜백 객체
-		asyncStub.unaryHello(request, new StreamObserver<HelloResponse>() {
+		asyncStub.unaryHello(request, new StreamObserver<>() {
 			@Override
 			public void onNext(HelloResponse response) {
 				log.info("[트럼프로부터의 응답]: {}", response.getResponse());
